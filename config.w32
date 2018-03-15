@@ -1,0 +1,13 @@
+// $Id$
+// vim:ft=javascript
+
+// If your extension references something external, use ARG_WITH
+// ARG_WITH("proonga", "for proonga support", "no");
+
+// Otherwise, use ARG_ENABLE
+// ARG_ENABLE("proonga", "enable proonga support", "no");
+
+if (PHP_PROONGA != "no") {
+	EXTENSION("proonga", "proonga.c", PHP_EXTNAME_SHARED, "/DZEND_ENABLE_STATIC_TSRMLS_CACHE=1");
+}
+
