@@ -1,0 +1,14 @@
+version: '2'
+
+services:
+    shell:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        image: "alpine-groonga:latest"
+        working_dir: "/opt"
+        environment:
+            - "APPLICATION_ENV=local"
+        volumes:
+            - $PWD/opt/examples:/opt/examples
+        tty: true

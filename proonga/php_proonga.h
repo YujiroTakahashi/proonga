@@ -7,15 +7,15 @@
 extern zend_module_entry proonga_module_entry;
 #define phpext_proonga_ptr &proonga_module_entry
 
-#define PHP_PROONGA_VERSION	"0.1.0"
+#define PHP_PROONGA_VERSION    "0.1.0"
 #define JSON_PARSER_GROONGA_DEPTH   512
 
 #ifdef PHP_WIN32
-#	define PHP_PROONGA_API __declspec(dllexport)
+#   define PHP_PROONGA_API __declspec(dllexport)
 #elif defined(__GNUC__) && __GNUC__ >= 4
-#	define PHP_PROONGA_API __attribute__ ((visibility("default")))
+#   define PHP_PROONGA_API __attribute__ ((visibility("default")))
 #else
-#	define PHP_PROONGA_API
+#   define PHP_PROONGA_API
 #endif
 
 #ifdef ZTS
@@ -41,7 +41,7 @@ typedef struct {
 } proonga_database_t;
 
 static inline proonga_database_t *proonga_database_from_obj(zend_object *obj) {
-	return (proonga_database_t*)((char*)(obj) - XtOffsetOf(proonga_database_t, zo));
+    return (proonga_database_t*)((char*)(obj) - XtOffsetOf(proonga_database_t, zo));
 }
 
 #define Z_PROONGA_P(zv) proonga_database_from_obj(Z_OBJ_P((zv)))
@@ -53,7 +53,7 @@ typedef struct {
 } proonga_gqtp_t;
 
 static inline proonga_gqtp_t *proonga_gqtp_from_obj(zend_object *obj) {
-	return (proonga_gqtp_t*)((char*)(obj) - XtOffsetOf(proonga_gqtp_t, zo));
+    return (proonga_gqtp_t*)((char*)(obj) - XtOffsetOf(proonga_gqtp_t, zo));
 }
 
 #define Z_GQTP_P(zv) proonga_gqtp_from_obj(Z_OBJ_P((zv)))
@@ -63,4 +63,4 @@ static inline proonga_gqtp_t *proonga_gqtp_from_obj(zend_object *obj) {
     ZEND_TSRMLS_CACHE_EXTERN()
 #endif
 
-#endif	/* PHP_PROONGA_H */
+#endif  /* PHP_PROONGA_H */

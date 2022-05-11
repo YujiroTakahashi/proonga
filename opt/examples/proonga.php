@@ -1,10 +1,10 @@
 <?php
 /*
-php -d extension=modules/proonga.so -f examples/proonga.php
+php8 -d extension=modules/proonga.so -f examples/proonga.php
 */
 
 /* DB作成・オープン */
-$gdb = new Proonga('./db/test.db');
+$gdb = new Proonga('/opt/examples/db/test.db');
 
 /**/
 echo "table_create --name Sample --flags TABLE_HASH_KEY --key_type ShortText\n";
