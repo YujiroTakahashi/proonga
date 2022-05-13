@@ -2,8 +2,16 @@ Groongaクライアント
 ======================
 PHP7 / PHP8 bindings for Groonga.
 
-利用方法
-------
+---
+
+## 目次
+
+* [利用方法](#install)
+* [Docker環境実行](#docker)
+* [Proongaクラス](#class00)
+
+
+## <a name="install">利用方法
 
 ### Groongaライブラリのインストール ###
 ```    
@@ -28,15 +36,45 @@ $ sudo -s
 内部でphp_json_decode_exを使用しています。  
 
 PHPのjsonライブラリを読み込んでからproongaを読み込むように  
-設定してください。
+設定してください。  
 
-### Docker環境実行
+
+## <a name="docker">Docker環境実行
 ```
 docker-compose build
 docker-compose run --user croco shell php8 /opt/examples/proonga.php
 ```
 
-### 接続 ###
+## <a name="class00">クラス  
+
+* [Proonga::__construct](#class10)― コンストラクタGroongaの初期化など
+* [Proonga::exec](#class20) ― 各コマンドの実行
+
+
+## <a name="class10"> コンストラクタGroongaの初期化など
+
+```php
+public Proonga::__construct(string $path)
+```
+  
+**引数**
+  
+* $path ・・・・・・ GroongaDBの保存先
+
+
+## <a name="class20"> 各コマンドの実行
+
+```php
+public Proonga::exec(string $command, array $params)
+```
+  
+**引数**
+  
+* $command ・・・・・・ Groongaコマンド
+* $params ・・・・・・ 各コマンドの引数
+
+
+### <a name="class11">接続 ###
 
 ```php
 <?php
@@ -44,7 +82,7 @@ docker-compose run --user croco shell php8 /opt/examples/proonga.php
 $gdb = new Proonga('./db/test.db');
 ```
 
-### テーブルの作成 ###
+### <a name="class21">テーブルの作成 ###
 
 ```php
 /* table_create --name Users --flags TABLE_HASH_KEY --key_type ShortText */
@@ -55,7 +93,7 @@ $res = $gdb->exec("table_create", [
 ]);
 ```
 
-### カラムの作成 ###
+### <a name="class22">カラムの作成 ###
 
 ```php
 /* column_create --table Users --name name --flags COLUMN_SCALAR --type ShortText */
@@ -67,7 +105,7 @@ $res = $gdb->exec("column_create", [
 ]);
 ```
 
-### データのロード ###
+### <a name="class23">データのロード ###
 
 ```php
 /*
@@ -89,7 +127,7 @@ $res = $gdb->exec("load", [
 
 ```
 
-### データ一覧の取得 ###
+### <a name="class24">データ一覧の取得 ###
 
 ```php
 /* select --table Users  --limit 10" */
