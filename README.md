@@ -15,15 +15,20 @@ PHP7 / PHP8 bindings for Groonga.
 
 ### Groongaライブラリのインストール ###
 ```    
-$ sudo aptitude install -y libgroonga0 libgroonga-dev
+$ sudo apt-get -y install software-properties-common
+$ sudo add-apt-repository -y universe
+$ sudo add-apt-repository -y ppa:groonga/ppa
+$ sudo apt-get update
+$ sudo apt-get -y install groonga
 ```
 
 ### proongaのインストール ###
 ```    
 $ git clone https://github.com/YujiroTakahashi/proonga.git
 $ cd ./proonga/proonga
-$ phpize
-$ ./configure
+$ mkdir build
+$ cd build
+$ cmake .. -DCMAKE_BUILD_TYPE=Release
 $ make -j
 $ sudo -s
 # make install

@@ -1,4 +1,4 @@
-FROM alpine:3.15 AS base-image
+FROM alpine:3.16 AS base-image
 RUN set -xe \
     && apk --update add --no-cache \
         libstdc++ \
@@ -26,16 +26,15 @@ RUN set -xe \
         rapidjson-dev \
         xxhash-dev \
         zstd-dev \
-    && curl -fsLO http://packages.groonga.org/source/groonga/groonga-12.0.3.tar.gz \
-    && tar xf groonga-12.0.3.tar.gz \
-    && cd groonga-12.0.3 \
+    && curl -fsLO http://packages.groonga.org/source/groonga/groonga-12.0.5.tar.gz \
+    && tar xf groonga-12.0.5.tar.gz \
+    && cd groonga-12.0.5 \
     && cmake . -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_SHARED_LIBS=ON \
     && make -j $(nproc) \
     && make install
 
 FROM base-image AS proonga-image
 COPY proonga /opt/proonga
-COPY --from=groonga-image /usr/lib/pkgconfig/groonga.pc /usr/lib/pkgconfig/groonga.pc
 COPY --from=groonga-image /usr/lib/libgroonga.so /usr/lib/libgroonga.so
 COPY --from=groonga-image /usr/include/groonga /usr/include/groonga
 WORKDIR /opt/proonga
@@ -50,8 +49,7 @@ RUN set -xe \
         libc-dev \
         php8-dev \
         make  \
-    && phpize8 \
-    && ./configure --prefix=/usr --with-php-config=php-config8 \
+    && cmake . -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr \
     && make -j $(nproc) \
     && make install
 
