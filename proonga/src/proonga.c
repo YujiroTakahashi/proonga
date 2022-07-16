@@ -116,7 +116,7 @@ PHP_MINIT_FUNCTION(proonga)
 {
     zend_class_entry ce;
 
-    /* Register NiaIco\Bert Class */
+    /* Register Proonga Class */
     memcpy(&proonga_grn_object_handlers, zend_get_std_object_handlers(), sizeof(zend_object_handlers));
     INIT_CLASS_ENTRY(ce, "Proonga", php_grn_class_methods);
     ce.create_object = php_grn_object_new;
@@ -125,7 +125,7 @@ PHP_MINIT_FUNCTION(proonga)
     proonga_grn_object_handlers.free_obj = php_grn_object_free_storage;
     proonga_grn_ce = zend_register_internal_class(&ce);
 
-    /* Register NiaIco\Similarity Class */
+    /* Register GQTP Class */
     memcpy(&proonga_gqtp_object_handlers, zend_get_std_object_handlers(), sizeof(zend_object_handlers));
     INIT_CLASS_ENTRY(ce, "GQTP", php_gqtp_class_methods);
     ce.create_object = php_gqtp_object_new;
