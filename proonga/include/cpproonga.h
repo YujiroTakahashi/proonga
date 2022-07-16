@@ -13,7 +13,7 @@ namespace croco {
 /**
  * Groongaクラス
  *
- * @package     faiss-server
+ * @package     Groonga Client
  * @author      Yujiro Takahashi <yujiro@cro-co.co.jp>
  */
 class CPProonga {
@@ -49,7 +49,7 @@ public:
 }; // class CPProonga
 
 /**
- * 
+ * GroongaDBのオープン
  *
  * @access public
  * @param  std::string path
@@ -68,7 +68,7 @@ inline void CPProonga::open(std::string path)
 }
 
 /**
- * 
+ * GroongaDBのクローズ
  *
  * @access public
  * @param  std::string path
@@ -90,7 +90,7 @@ inline void CPProonga::close()
 }
 
 /**
- * 
+ * 引数なしコマンドの実行
  *
  * @access public
  * @param  std::string command
@@ -122,7 +122,7 @@ inline std::string CPProonga::exec(std::string command)
 }
 
 /**
- * 
+ * 引数有りコマンドの実行
  *
  * @access public
  * @param  std::string command

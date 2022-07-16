@@ -30,7 +30,6 @@ PHP_METHOD(proonga_gqtp_class, __construct)
         return ;
     }
 
-    /* 出力タイプの設定 */
     if (GRN_SUCCESS != grn_ctx_set_output_type(&db_obj->ctx, GRN_CONTENT_JSON)) {
         zend_throw_exception(NULL, "Unable to set the output type.", 0);
         return ;
@@ -111,7 +110,8 @@ PHP_METHOD(proonga_gqtp_class, exec)
             JSON_PARSER_GROONGA_DEPTH
         );
         return ;
-    }
+    } // if (GRN_SUCCESS == db_obj->ctx.rc)
+
     RETURN_FALSE;
 }
 /* }}} */

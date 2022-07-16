@@ -69,7 +69,7 @@ PHP_METHOD(proonga_grn_class, exec)
             zend_ulong size = zend_hash_num_elements(ht);
 
             std::vector<croco::CPProonga::attribute_t> attributes;
-            for (zend_ulong idx=0; idx<size; idx++) {
+            for (zend_ulong idx = 0; idx<size; idx++) {
                 zend_string *name;
                 zend_ulong index;
                 if (zend_hash_get_current_key(ht, &name, &index) == HASH_KEY_IS_STRING) {
@@ -85,8 +85,8 @@ PHP_METHOD(proonga_grn_class, exec)
 
             json = proonga->exec(command, attributes);
         } // if (NULL == params)
-        array_init(return_value);
 
+        array_init(return_value);
         php_json_decode_ex(
             return_value,
             json.c_str(),
